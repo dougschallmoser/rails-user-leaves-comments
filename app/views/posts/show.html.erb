@@ -18,6 +18,7 @@
 <% end %>
 
 <h4>Add Comment:</h4>
+<!-- We use "@post.comments.build" to build a new comment with an existing user_id or a new user, and comment content -->
 <%= form_for @post.comments.build do |f| %>
     <%= f.hidden_field :post_id %>
     <p>
