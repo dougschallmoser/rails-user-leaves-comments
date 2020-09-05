@@ -10,9 +10,17 @@ class PostsController < ApplicationController
     end
 
     def new
+        @post = Post.new
     end
 
     def create
+        post = Post.new(post_params)
+        if post.valid?
+            post.save
+            redirect_to post_path(post)
+        else
+            render :new 
+        end
     end
 
     def edit
@@ -31,7 +39,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:title, :content)
+        params.require(:post).permit(:title, :content, category_ids: [], categories_attributes: [:name])
     end
 
 end

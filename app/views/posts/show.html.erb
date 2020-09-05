@@ -1,13 +1,43 @@
 <h1><%= @post.title %></h1>
 
+<h3>Category:</h3>
+<% @post.categories.each do |category| %>
+    <%= link_to category.name, category_path(category) %>
+<% end %>
+
 <h3>Content:</h3>
-<h5><%= @post.content %></h5>
+<h4><%= @post.content %></h4>
 
 <h3>Comments:</h3>
+<%= 'No comments yet.' if @post.comments.empty? %>
+
 <% @post.comments.each do |comment| %>
     <p><%= link_to comment.user.username, user_path(comment.user) %><br>
     <%= comment.content %>
     </p>
+<% end %>
+
+<h4>Add Comment:</h4>
+<%= form_for @post.comments.build do |f| %>
+    <%= f.hidden_field :post_id %>
+    <p>
+        <%= f.label 'Select user:' %><br>
+        <%= f.collection_select :user_id, User.all, :id, :username, :include_blank => true %>
+    </p>
+
+    <p>
+        <%= f.label 'Or create a new user:' %><br>
+        <%= f.fields_for :user, User.new do |user| %>
+            <%= user.text_field :username %>
+        <% end %>
+    </p>
+
+    <p>
+        <%= f.label 'Comment:' %><br>
+        <%= f.text_field :content %>
+    </p>
+
+    <%= f.submit %>
 <% end %>
 
 
