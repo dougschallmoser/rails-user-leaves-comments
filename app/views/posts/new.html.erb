@@ -18,7 +18,7 @@
 
     <p>
         <%= f.label 'And/Or add a new category:' %><br>
-        <%= f.fields_for :categories, @post.categories.build do |category| %>
+        <%= f.fields_for :categories do |category| %>
             <%= category.text_field :name %>
         <% end %>
     </p>
