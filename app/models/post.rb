@@ -11,7 +11,7 @@ class Post < ApplicationRecord
                 # self.categories.build(category_attributes) # doesn't check if category already exists
                 category = Category.find_or_create_by(category_attributes)
                 # self.post_categories.build(category: category) # better so it doesn't return all categories like push does
-                self.categories << category 
+                self.categories << category unless self.categories.include?(category)
             end
         end
     end
