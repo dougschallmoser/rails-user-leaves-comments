@@ -8,7 +8,13 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
+  <header>
+    <nav>
+      <%= link_to_unless_current "Home", root_path %>   |
+      <%= link_to_unless_current "Categories", categories_path %>
+    </nav
+  </header>
   <body>
     <%= yield %>
   </body>
