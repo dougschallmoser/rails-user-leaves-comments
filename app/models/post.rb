@@ -5,6 +5,14 @@ class Post < ApplicationRecord
     has_many :comments
     has_many :users, through: :comments
 
+    def self.search(query)
+        if query.present?
+            self.where("title LIKE ?", "%#{query}%")
+        else
+            self.all
+        end
+    end
+
     def categories_attributes=(categories_attributes)
         categories_attributes.values.each do |category_attributes|
             if category_attributes[:name].present?
