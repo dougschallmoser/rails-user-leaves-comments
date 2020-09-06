@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :users
 
-  root 'posts#index'
+  root 'application#index'
   
 end
