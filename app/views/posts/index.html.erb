@@ -1,8 +1,17 @@
 <h1>All Posts</h1>
 
 <%= form_tag posts_path, method: "get" do %>
-    <%= text_field_tag :query, nil, placeholder: "Enter post title" %>
+    Search for post:
+    <%= text_field_tag :query %>
     <%= submit_tag "Search" %>
+<% end %>
+
+<br>
+
+<%= form_tag posts_path, method: "get" do %>
+    Filter by category:
+    <%= collection_select :post, :category_id, Category.all, :id, :name, include_blank: true %>
+    <%= submit_tag "Filter" %>
 <% end %>
 
 <ul>

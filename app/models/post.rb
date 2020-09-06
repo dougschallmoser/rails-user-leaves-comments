@@ -13,6 +13,14 @@ class Post < ApplicationRecord
         end
     end
 
+    def self.filter(category_id)
+        if category_id.present?
+            self.joins(:post_categories).where("post_categories.category_id = ?", "#{category_id}")
+        else
+            self.all
+        end
+    end
+
     def categories_attributes=(categories_attributes)
         categories_attributes.values.each do |category_attributes|
             if category_attributes[:name].present?

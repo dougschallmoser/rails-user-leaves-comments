@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
     def index
         @posts = Post.search(params[:query])
+        @posts = Post.filter(params[:post][:category_id]) if params[:post]
     end
 
     def show
