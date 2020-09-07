@@ -15,7 +15,8 @@ class Post < ApplicationRecord
 
     def self.filter(category_id)
         if category_id.present?
-            self.joins(:post_categories).where("post_categories.category_id = ?", "#{category_id}")
+            # self.joins(:post_categories).where("post_categories.category_id = ?", "#{category_id}")
+            self.includes(:post_categories).where(post_categories: {category_id: category_id})
         else
             self.all
         end
