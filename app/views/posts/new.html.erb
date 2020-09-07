@@ -18,8 +18,8 @@
 
     <p>
         <%= f.label 'And/Or add a new category:' %><br>
-        <%= f.fields_for :categories do |category| %>
-            <%= category.text_field :name %>
+        <%= f.fields_for :categories do |c| %>
+            <%= c.text_field :name %>
         <% end %>
     </p>
     

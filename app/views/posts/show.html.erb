@@ -28,8 +28,8 @@
 
     <p>
         <%= f.label 'Or create a new user:' %><br>
-        <%= f.fields_for :user, User.new do |user| %>
-            <%= user.text_field :username %>
+        <%= f.fields_for :user, User.new do |u| %>
+            <%= u.text_field :username %>
         <% end %>
     </p>
 
