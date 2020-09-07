@@ -23,7 +23,7 @@
     <%= f.hidden_field :post_id %>
     <p>
         <%= f.label 'Select user:' %><br>
-        <%= f.collection_select :user_id, User.all, :id, :username, :include_blank => true %>
+        <%= f.collection_select :user_id, @users, :id, :username, :include_blank => true %>
     </p>
 
     <p>

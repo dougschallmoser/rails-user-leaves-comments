@@ -10,7 +10,7 @@
 
 <%= form_tag posts_path, method: "get" do %>
     Filter by category:
-    <%= collection_select :post, :category_id, Category.all, :id, :name, include_blank: true %>
+    <%= collection_select :post, :category_id, @categories, :id, :name, include_blank: true %>
     <%= submit_tag "Filter" %>
 <% end %>
 
